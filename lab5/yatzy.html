@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Yatzy — Mock-ups (Lab 05)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Mock-up styles only (no JS) -->
+    <link rel="stylesheet" href="yatzystyle.css" />
+</head>
+<body>
+<!-- Header: title + status -->
+<header class="top">
+    <h1>Yatzy</h1>
+    <div class="meta">
+        <span>Round: 1 / 13</span>
+        <span>Rolls left: 3</span>
+    </div>
+</header>
+
+<main class="grid">
+    <!-- Panel: Dice & Controls -->
+    <section class="panel">
+        <h2 class="panel__title">Dice</h2>
+
+        <!-- Dice row: static icons for mock-up -->
+        <div class="dice" aria-label="Dice">
+            <div class="die" title="Die 1">⚀</div>
+            <div class="die held" title="Die 2" aria-label="Held">⚃</div>
+            <div class="die" title="Die 3">⚄</div>
+            <div class="die" title="Die 4">⚂</div>
+            <div class="die" title="Die 5">⚁</div>
+        </div>
+
+        <!-- Controls (static) -->
+        <div class="controls">
+            <button class="btn btn--primary">Roll</button>
+            <button class="btn">New Game</button>
+        </div>
+
+        <p class="hint">Click a die to hold/unhold. Up to three rolls per round.</p>
+    </section>
+
+    <!-- Panel: Scorecard -->
+    <section class="panel">
+        <h2 class="panel__title">Scorecard</h2>
+
+        <table class="card">
+            <thead>
+            <tr><th>Category</th><th>Score</th><th>Pick</th></tr>
+            </thead>
+            <tbody>
+            <!-- Upper section -->
+            <tr><td>Ones</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Twos</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Threes</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Fours</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Fives</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Sixes</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr class="sub"><td>Upper Total</td><td>0</td><td></td></tr>
+            <tr class="sub"><td>Bonus (≥63 → +35)</td><td>0</td><td></td></tr>
+
+            <!-- Lower section -->
+            <tr><td>Three of a Kind</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Four of a Kind</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Full House (25)</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Small Straight (30)</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Large Straight (40)</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Yahtzy (50)</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            <tr><td>Chance</td><td class="val">—</td><td><button class="btn btn--tiny">Use</button></td></tr>
+            </tbody>
+
+            <tfoot>
+            <tr class="grand"><td>Grand Total</td><td>0</td><td></td></tr>
+            </tfoot>
+        </table>
+
+        <p class="hint">Mock-up reflects the documented color palette and fonts.</p>
+    </section>
+</main>
+
+<footer class="foot">
+    <small>Mock-ups only (no JS). CST3106 • Lab 05</small>
+</footer>
+</body>
+</html>
