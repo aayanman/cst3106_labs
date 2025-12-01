@@ -1,13 +1,13 @@
-# 🏥 Hospital Triage Web App — Design System
-**Lab 10 — CST3106**  
-**Prepared By:** Mahmoud Ahmed
+# 🏥Hospital Triage Web App — Design System
+*Lab 10 — CST3106*  
+*Prepared By:* Mahmoud Ahmed and Aayan Shaikh
 
 ---
 
-# 1️⃣ Typography (Both Pages)
+#  Typography (Both Pages)
 
-**Font Used:** Inter (Google Fonts)  
-**Weights:**
+*Font Used:* Inter (Google Fonts)  
+*Weights:*
 - 400 — body text
 - 600 — section titles
 - 700 — main titles
@@ -17,21 +17,21 @@ This font was chosen for its readability and clean medical UI appearance.
 
 ---
 
-# 2️⃣ Colour Palette (Both Pages)
+# Colour Palette (Both Pages)
 
 | Element | Color | Hex |
 |---------|--------|---------|
-| Background Glow | Light Medical Blue | `#BBDEFB` |
-| App Card / Container | Semi-Transparent White | `#FFFFFF` |
-| Titles | Medical Red | `#C62828` |
-| Submit Button | Medical Green | `#2E7D32` |
-| Selection Buttons | Grey | `#E0E0E0` |
+| Background Glow | Light Medical Blue | #BBDEFB |
+| App Card / Container | Semi-Transparent White | #FFFFFF |
+| Titles | Medical Red | #C62828 |
+| Submit Button | Medical Green | #2E7D32 |
+| Selection Buttons | Grey | #E0E0E0 |
 
 The palette creates a clean, calm medical interface.
 
 ---
 
-# 3️⃣ USER PAGE DESIGN 
+#  USER PAGE DESIGN
 
 This page collects triage information from the patient.
 
@@ -43,7 +43,7 @@ This page collects triage information from the patient.
 - Semi-transparent white background
 - Enough padding to keep elements readable
 
- 
+
 ![Container](screenshots/colors.png)
 
 ---
@@ -55,7 +55,7 @@ This page collects triage information from the patient.
 - Hover and selected (blue) states
 - Responsive grid layout
 
- 
+
 ![Injury Section](screenshots/injury-section.png)
 
 ---
@@ -73,7 +73,7 @@ This page collects triage information from the patient.
 ## 3.4 Submit Button
 - Large full-width green button
 - Hover effect
-- Saves data into `localStorage`
+- Saves data into localStorage
 - Redirects to Admin page
 
 
@@ -81,7 +81,7 @@ This page collects triage information from the patient.
 
 ---
 
-# 4️⃣ ADMIN PAGE DESIGN 
+#  ADMIN PAGE DESIGN
 
 This page simulates a triage dashboard for hospital staff.
 
@@ -114,9 +114,9 @@ Design:
 ---
 
 ## 4.3 Admin Action Buttons
-- **Increase (+)** — Blue
-- **Decrease (–)** — Blue
-- **Remove** — Red
+- *Increase (+)* — Blue
+- *Decrease (–)* — Blue
+- *Remove* — Red
 
 All buttons:
 - Rounded
@@ -127,7 +127,7 @@ All buttons:
 ![Admin Buttons](screenshots/admin-buttons.png)
 ---
 
-# 5️⃣ Layout Structure (Both Pages)
+#  Layout Structure (Both Pages)
 
 ## User Page Flow
 1. Title
@@ -144,7 +144,7 @@ All buttons:
 
 ---
 
-# 6️⃣ Consistency
+#  Consistency
 
 Consistency is maintained through:
 - Same font family
@@ -157,5 +157,34 @@ Consistency is maintained through:
 
 ---
 
+#  Layout, Wireframes & Navigation
+1. User opens the User page.
 
 
+2. User selects:
+    - exactly one Injury Type
+    - exactly one Pain Level (1–5)
+
+
+3. When the user clicks "Submit":
+    - The app creates a new triage entry:
+      injury = chosen injury type
+      painLevel = chosen pain level
+      attentionScore = initial score based on painLevel
+    - The entry is stored (later labs: in the emergency_waitlist database).
+    - The user sees a confirmation message; they stay on the same page.
+
+
+4. When the Admin opens the Admin page:
+    - The app loads all stored triage entries.
+    - Entries are sorted by attentionScore (highest first).
+
+
+5. For each row in the Admin table:
+    - [+] increases the attentionScore (up to a max, e.g. 10).
+    - [-] decreases the attentionScore (down to a min, e.g. 1).
+    - [Remove] deletes the entry from the triage list.
+
+
+6. After any admin action:
+    - The table is updated (and re-sorted) to keep the most urgent cases at the top.
