@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Triage - User</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Hospital Triage – User</h1>
+    <p class="description">Please select your injury type and pain level below.</p>
+
+    <div class="section">
+        <div class="section-title">Injury Type:</div>
+        <div class="button-grid" id="injuryOptions">
+            <button data-injury="Cut/Wound">Cut / Wound</button>
+            <button data-injury="Broken Bone">Broken Bone</button>
+            <button data-injury="Burn">Burn</button>
+            <button data-injury="Head Injury">Head Injury</button>
+            <button data-injury="Allergic Reaction">Allergic Reaction</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Pain Level:</div>
+        <div class="button-grid" id="painOptions">
+            <button data-pain="1">1 - Very Low</button>
+            <button data-pain="2">2 - Low</button>
+            <button data-pain="3">3 - Moderate</button>
+            <button data-pain="4">4 - Severe</button>
+            <button data-pain="5">5 - Extreme</button>
+        </div>
+    </div>
+
+    <button id="submitBtn" class="submit-btn">Submit</button>
+</div>
+
+<script>
+    let selectedInjury = null;
+    let selectedPain = null;
+
+    document.querySelectorAll('#injuryOptions button').forEach(btn => {
+        btn.onclick = () => {
+            selectedInjury = btn.dataset.injury;
+
+            document.querySelectorAll('#injuryOptions button').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        };
+    });
+
+    document.querySelectorAll('#painOptions button').forEach(btn => {
+        btn.onclick = () => {
+            selectedPain = btn.dataset.pain;
+
+            document.querySelectorAll('#painOptions button').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        };
+    });
+
+    document.getElementById("submitBtn").onclick = () => {
+        if (!selectedInjury || !selectedPain) {
+            alert("Please select both injury type and pain level.");
+            return;
+        }
+
+        const patient = {
+            injury: selectedInjury,
+            pain: parseInt(selectedPain),
+            attention: parseInt(selectedPain) * 2
+        };
+
+        localStorage.setItem("newPatient", JSON.stringify(patient));
+        window.location.href = "admin.html";
+    };
+</script>
+
+</body>
+</html>

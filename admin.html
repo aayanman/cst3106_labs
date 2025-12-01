@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Triage - Admin</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container admin-container">
+    <h1>Hospital Triage – Admin Panel</h1>
+    <p class="description">
+        Patients will appear below in order of their required medical attention.
+    </p>
+
+    <table id="patientTable">
+        <thead>
+        <tr>
+            <th>Injury</th>
+            <th>Pain Level</th>
+            <th>Attention Score</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Rows added dynamically -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function loadPatient() {
+        const patientData = JSON.parse(localStorage.getItem("newPatient"));
+        if (!patientData) return;
+
+        const table = document.querySelector("#patientTable tbody");
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+                <td>${patientData.injury}</td>
+                <td>${patientData.pain}</td>
+                <td class="attention">${patientData.attention}</td>
+                <td>
+                    <button class="action-btn increase">+</button>
+                    <button class="action-btn decrease">−</button>
+                    <button class="action-btn remove red">Remove</button>
+                </td>
+            `;
+
+        table.appendChild(row);
+
+        addActionListeners(row);
+    }
+
+    function addActionListeners(row) {
+        const attentionCell = row.querySelector(".attention");
+
+        row.querySelector(".increase").onclick = () => {
+            let score = parseInt(attentionCell.innerText);
+            attentionCell.innerText = score + 1;
+        };
+
+        row.querySelector(".decrease").onclick = () => {
+            let score = parseInt(attentionCell.innerText);
+            if (score > 0) attentionCell.innerText = score - 1;
+        };
+
+        row.querySelector(".remove").onclick = () => {
+            row.remove();
+        };
+    }
+
+    loadPatient();
+</script>
+
+</body>
+</html>
